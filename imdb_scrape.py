@@ -113,6 +113,19 @@ for song in cur.execute("SELECT song FROM Imdb WHERE artist = 'Creedence Clearwa
 
 print(len(creedence_lst))
 
+x="Queen"
+y="Fleetwood Mac"
+z="Creedence Clearwater Revival"
+d={}
+d[x]=queen_lst
+d[y]=fleetwood_lst
+d[z]=creedence_lst
+
+
+l=open('classic_artists.json', 'w')
+l.write(json.dumps(d))
+l.close()
+
 
 xvals = ['Queen', 'Fleetwood Mac', 'Creedence Clearwater Revival']
 yvals = [len(queen_lst),len(fleetwood_lst),len(creedence_lst)]
