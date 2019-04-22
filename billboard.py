@@ -64,7 +64,7 @@ f.close()
 
 def make_database():
         try:
-                conn=sqlite3.connect('CNN.sqlite')
+                conn=sqlite3.connect('music.sqlite')
                 cur=conn.cursor()
         except:
                 print('Could not connect')
@@ -81,7 +81,7 @@ def make_database():
 make_database()
 
 def populate_database():
-        conn=sqlite3.connect('CNN.sqlite')
+        conn=sqlite3.connect('music.sqlite')
         cur=conn.cursor()
 
         for song in scrape(soup).keys():
@@ -102,7 +102,7 @@ ari_lst = []
 
 
 
-conn=sqlite3.connect('CNN.sqlite')
+conn=sqlite3.connect('music.sqlite')
 cur=conn.cursor()
 
 for song in cur.execute("SELECT song FROM Billboard WHERE artist = 'Ariana Grande'"):
@@ -122,6 +122,17 @@ for song in cur.execute("SELECT song FROM Billboard WHERE artist = 'Billie Eilis
 
 print(len(billie_lst))
 
+x = 'Ariana Grande'
+y = 'Post Malone'
+w = 'Billie Eilish'
+d = {}
+d[x] = ari_lst
+d[y] = post_lst
+d[w] = billie_lst
+
+
+z = open('fav_artists.json','w')
+z.write(json.dumps(d))
 
 xvals = ['Ariana Grande', 'Post Malone', 'Billie Eilish']
 yvals = [len(ari_lst),len(post_lst),len(billie_lst)]

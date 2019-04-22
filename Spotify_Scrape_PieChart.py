@@ -12,13 +12,13 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import numpy as np
 import os
-import Plotly_Key
+#import Plotly_Key
 
 from IPython.display import IFrame
 IFrame(src= "https://dash-simple-apps.plotly.host/dash-figurelabelsplot/", width="100%", height="650px", frameBorder="0")
 
-plotly.__version__
-plotly.tools.set_credentials_file(username='landauha', api_key=Plotly_Key.api_key)
+#plotly.__version__
+#plotly.tools.set_credentials_file(username='landauha', api_key=Plotly_Key.api_key)
 
 # Get base url and initialize Beautifup Soup
 url = 'https://spotifycharts.com/regional'
@@ -69,7 +69,7 @@ f = open('spotify_cache_pie.json', 'w')
 f.write(json.dumps(spotify))
 f.close()
 
-conn = sqlite3.connect('spotify_charts_pie.sqlite')
+conn = sqlite3.connect('music.sqlite')
 cur = conn.cursor()
 
 cur.execute('CREATE TABLE IF NOT EXISTS Spotify (song TEXT, artist TEXT, position INTEGER, streams INTEGER)')
@@ -113,10 +113,10 @@ labels = ['Ariana Grande','Post Malone','Billie Eilish','Other Artists']
 values = [ArianaGrandeStreams,PostMaloneStreams,BillieEilishStreams,OtherArtistsStreams]
 colors = ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1']
 
-trace = go.Pie(labels=labels, values=values,  title="Streams Per Our Favorite Artists in Spotify's Top 200",
-               hoverinfo='label+percent', textinfo='value', 
-               textfont=dict(size=20),
+trace = go.Pie(labels=labels, values=values, title="Streams Per Our Favorite Artists in Spotify's Top 200",
+               hoverinfo='label', textinfo='value+percent', 
+               textfont=dict(size=15),
                marker=dict(colors=colors, 
-                           line=dict(color='#000000', width=2)))
+                           line=dict(color='#000000', width=1.5)))
 
 py.iplot([trace], filename='styled_pie_chart', auto_open=True)

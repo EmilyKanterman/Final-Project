@@ -12,13 +12,13 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import numpy as np
 import os
-import Plotly_Key
+#import Plotly_Key
 
 from IPython.display import IFrame
 IFrame(src= "https://dash-simple-apps.plotly.host/dash-figurelabelsplot/", width="100%", height="650px", frameBorder="0")
 
-plotly.__version__
-plotly.tools.set_credentials_file(username='landauha', api_key=Plotly_Key.api_key)
+#plotly.__version__
+#plotly.tools.set_credentials_file(username='landauha', api_key=Plotly_Key.api_key)
 
 # Get base url and initialize Beautifup Soup
 url = 'https://spotifycharts.com/regional'
@@ -69,7 +69,7 @@ f = open('spotify_cache_scatter.json', 'w')
 f.write(json.dumps(spotify))
 f.close()
 
-conn = sqlite3.connect('spotify_charts_scatter.sqlite')
+conn = sqlite3.connect('music.sqlite')
 cur = conn.cursor()
 
 cur.execute('CREATE TABLE IF NOT EXISTS Spotify (song TEXT, artist TEXT, position INTEGER, streams INTEGER)')
@@ -101,7 +101,7 @@ layout =  go.Layout(
     title=go.layout.Title(
         text="How Many Times Has Each Top 200 Song on Spotify Been Played?",
         font=dict(
-                family='Courier New, monospace',
+                family='Arial',
                 size=18,
                 color='#000000'
             ),
@@ -112,7 +112,7 @@ layout =  go.Layout(
         title=go.layout.xaxis.Title(
             text='Position on Spotify Top 200',
             font=dict(
-                family='Courier New, monospace',
+                family='Arial',
                 size=18,
                 color='#000000'
             )
@@ -122,7 +122,7 @@ layout =  go.Layout(
         title=go.layout.yaxis.Title(
             text='# of Streams',
             font=dict(
-                family='Courier New, monospace',
+                family='Arial',
                 size=18,
                 color='#000000'
             )
