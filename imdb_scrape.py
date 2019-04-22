@@ -126,7 +126,6 @@ l=open('classic_artists.json', 'w')
 l.write(json.dumps(d))
 l.close()
 
-
 xvals = ['Queen', 'Fleetwood Mac', 'Creedence Clearwater Revival']
 yvals = [len(queen_lst),len(fleetwood_lst),len(creedence_lst)]
 
